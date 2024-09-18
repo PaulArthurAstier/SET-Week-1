@@ -101,6 +101,7 @@ Mem:            15Gi       510Mi        14Gi       3.0Mi       227Mi        14Gi
 Swap:          4.0Gi          0B       4.0Gi
 ----------------------------
 The total number of CPU cores are : 12
+
 ```	
 
 ### [Exercise 2](#exercise-2)
