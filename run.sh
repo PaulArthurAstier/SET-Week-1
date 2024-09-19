@@ -1,11 +1,18 @@
 #!/bin/bash
 
-argument="$1"
+file_name="$1"
 
-string=$(echo -n "$argument" | wc -c)
 
-echo "The number of characters in the string is $string"
+# Check if a file name is passed as an argument
+if [ -z "$file_name" ]; then
+    echo "File couldn't be found"
+    exit 1
+fi
 
-string=$(echo -n "$argument" | wc -w)
+url=$(cat "$file_name")
 
-echo "The number of words in the string is $string"
+if [[ -n "$file_name" ]]; then
+    url=$(cat "$file_name" )
+fi
+
+if [[-n ]]
