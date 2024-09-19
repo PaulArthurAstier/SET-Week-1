@@ -1,35 +1,15 @@
-echo "----------------------------"
+#!/bin/bash
 
-echo "Current date and time: $(date)"
+number=$1
 
-echo "----------------------------"
+if ((number % 2 == 0)); then
+    echo "$number is even"
+else 
+    echo "$number is odd"
+fi 
 
-echo "The user is : $(whoami)"
-
-echo "----------------------------"
-
-echo "The home directory is : $(eval echo ~)"
-
-echo "----------------------------"
-
-echo "The current directory is : $(pwd)"
-
-echo "----------------------------"
-
-echo "The current terminal is : $TERM"
-
-echo "----------------------------"
-
-echo "The current Shell is : $SHELL"
-
-echo "----------------------------"
-
-echo "The content of the PATH variable is : $PATH"
-
-echo "----------------------------"
-
-echo "The avaible memory is : $(free -h)"
-
-echo "----------------------------"
-
-echo "The total number of CPU cores are : $(nproc --all)"
+if ((number < 0)); then
+    echo "$number is negative"
+else 
+    echo "$number is positive"
+fi 

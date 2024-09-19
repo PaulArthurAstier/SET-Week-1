@@ -39,6 +39,7 @@ Current date and time: 2021-09-01 10:00:00
 Solution:
     
 ```bash
+#!/bin/bash
 echo "----------------------------"
 
 echo "Current date and time: $(date)"
@@ -130,12 +131,19 @@ Solution:
 ```bash
 #!/bin/bash
 
-# get the number passed to the script
 number=$1
 
-# Paste the rest of your solution here
+if ((number % 2 == 0)); then
+    echo "$number is even"
+else 
+    echo "$number is odd"
+fi 
 
-
+if ((number < 0)); then
+    echo "$number is negative"
+else 
+    echo "$number is positive"
+fi 
 ```
 
 My output when run with the number 5 and -2:
@@ -144,6 +152,11 @@ My output when run with the number 5 and -2:
 
 
 ```text
+5 is odd
+5 is positive
+
+-2 is even
+-2 is negative
 ```
 
 ### [Exercise 3](#exercise-3)
