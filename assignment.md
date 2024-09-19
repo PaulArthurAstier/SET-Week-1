@@ -175,10 +175,15 @@ Solution:
 ```bash
 #!/bin/bash
 
-# get the string passed to the script
-string=$1
+argument="$1"
 
-# Paste the rest of your solution here
+string=$(echo -n "$argument" | wc -c)
+
+echo "The number of characters in the string is $string"
+
+string=$(echo -n "$argument" | wc -w)
+
+echo "The number of words in the string is $string"
 ```
 
 My output when run with the string "Hello, World! I'm doing bash!":
@@ -186,6 +191,8 @@ My output when run with the string "Hello, World! I'm doing bash!":
 (Paste the output of your script below)
 
 ```text
+The number of characters in the string is 29
+The number of words in the string is 5
 ```
 
 ### [Exercise 4](#exercise-4)

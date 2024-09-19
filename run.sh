@@ -1,15 +1,11 @@
 #!/bin/bash
 
-number=$1
+argument="$1"
 
-if ((number % 2 == 0)); then
-    echo "$number is even"
-else 
-    echo "$number is odd"
-fi 
+string=$(echo -n "$argument" | wc -c)
 
-if ((number < 0)); then
-    echo "$number is negative"
-else 
-    echo "$number is positive"
-fi 
+echo "The number of characters in the string is $string"
+
+string=$(echo -n "$argument" | wc -w)
+
+echo "The number of words in the string is $string"
