@@ -4,8 +4,10 @@ file_name="$1"
 
 
 # Check if a file name is passed as an argument
-if [ -z "$file_name" ]; then
-    echo "File couldn't be found"
+if [ -e "$file_name" ]; then
+    echo "File found"
+else
+    echo "File not found"
     exit 1
 fi
 
@@ -15,4 +17,5 @@ if [[ -n "$file_name" ]]; then
     url=$(cat "$file_name" )
 fi
 
-if [[-n ]]
+wget -qO- "$url"
+
