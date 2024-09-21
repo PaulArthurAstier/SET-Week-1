@@ -21,47 +21,53 @@ else
     fi
 fi
 
-read first_line < $file_name
-first_line=$(echo "$first_line" | tr -d ',')
+while IFS= read line || [[ -n $line ]]; do
 
-cat+="Categories: "
-cat_count=0
-
-for word in $first_line; do
-    if [ $cat_count -ne 0 ]; then
-        cat+="$word "
-    fi
-    ((cat_count++))
-done
-
-cat_count=$((cat_count))
-
-output=$cat
-output+="\n\n"
-
-for i in $(seq 2 $cat_count); do
+    cat="What is your favorite "
+    cat+=$(echo "$line" | cut -d' ' -f1)
+    cat=$(echo "$cat" | tr -d ':')
+    cat+="?"
 
     counter=0
 
-    word_position=$(($i))
-    output+=$(echo "$cat" | cut -d' ' -f$word_position)
-    output+=": "
-
-    while IFS= read -r line || [[ -n $line ]]; do
-
+    for word in $line; do
         if [ $counter -ne 0 ]; then
-           output+="$(echo "$line" | cut -d' ' -f$i) "
+            
+            cat+="\n"
+            cat+="$counter"
+            cat+=") "
+            cat+="$word"
+
+
         fi
-
         ((counter++))
+    done
 
-    done < "$file_name"
+    echo -e $cat
 
-    output+="\n"
-done
+    read -p "" user_input < /dev/tty
 
-output=$(echo "$output" | tr -d ',')
+    answers+="$user_input "
 
-echo -e "$output"
+done < "$file_name"
 
+counter=1
 
+while IFS= read line || [[ -n $line ]]; do
+
+    final+="Your favorite "
+    final+=$(echo "$line" | cut -d' ' -f1)
+    final=$(echo "$final" | tr -d ':')
+    final+=" is "
+
+    fav_choice=$(echo "$answers" | cut -d' ' -f$counter)
+    ((fav_choice++))
+    fav_word=$(echo "$line" | cut -d' ' -f$fav_choice)
+
+    final+="$fav_word "
+
+    ((counter++))
+
+done < "$file_name"
+
+echo -e "$final"
