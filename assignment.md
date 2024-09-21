@@ -209,6 +209,23 @@ Solution:
 
 ```bash
 #!/bin/bash
+
+file_name="$1"
+
+if [ -e "$file_name" ]; then
+    echo "File found"
+else
+    echo "File not found"
+    exit 1
+fi
+
+url=$(cat "$file_name")
+
+if [[ -n "$file_name" ]]; then
+    url=$(cat "$file_name" )
+fi
+
+wget -qO- "$url"
 ```
 
 My output when run with a file named `exercise_4.in`:
@@ -216,6 +233,10 @@ My output when run with a file named `exercise_4.in`:
 (Paste the output of your script below)
 
 ```text
+File found
+**ALL YOUR BASE ARE BELONG TO US!**
+
+See [Wikipedia](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us) for more information;).
 ```
 
 ### [Exercise 5](#exercise-5)
